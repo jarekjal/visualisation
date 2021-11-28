@@ -11,30 +11,36 @@
     const centreX = width / 2;
     const centreY = height / 2;
     const strokeWidth = 10;
-    const eyeOffset = 100;
+    const eyeOffsetX = 100;
+    const eyeOffsetY = 100;
     const eyeRadius = 50;
+    const mouthWidth = 20;
+    const mouthRadius = 180;
+    const mouthArc = d3.arc().innerRadius(mouthRadius).outerRadius(mouthRadius + mouthWidth).startAngle(2 * Math.PI / 4).endAngle(2 * Math.PI / 4 * 3);
 
     const App = () => /*#__PURE__*/React__default["default"].createElement("svg", {
       height: height,
       width: width
+    }, /*#__PURE__*/React__default["default"].createElement("g", {
+      transform: `translate(${centreX},${centreY})`
     }, /*#__PURE__*/React__default["default"].createElement("circle", {
-      cx: centreX,
-      cy: centreY,
       r: (width - strokeWidth) / 2,
       stroke: "black",
       "stroke-width": strokeWidth,
       fill: "yellow"
     }), /*#__PURE__*/React__default["default"].createElement("circle", {
-      cx: centreX - eyeOffset,
-      cy: centreY - eyeOffset,
+      cx: -eyeOffsetX,
+      cy: -eyeOffsetY,
       r: eyeRadius,
       fill: "black"
     }), /*#__PURE__*/React__default["default"].createElement("circle", {
-      cx: centreX + eyeOffset,
-      cy: centreY - eyeOffset,
+      cx: eyeOffsetX,
+      cy: -eyeOffsetY,
       r: eyeRadius,
       fill: "black"
-    }));
+    }), /*#__PURE__*/React__default["default"].createElement("path", {
+      d: mouthArc()
+    })));
 
     const rootElement = document.getElementById('root');
     ReactDOM__default["default"].render( /*#__PURE__*/React__default["default"].createElement(App, null), rootElement);
