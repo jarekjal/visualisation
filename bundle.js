@@ -18,16 +18,24 @@
     const mouthRadius = 180;
     const mouthArc = d3.arc().innerRadius(mouthRadius).outerRadius(mouthRadius + mouthWidth).startAngle(2 * Math.PI / 4).endAngle(2 * Math.PI / 4 * 3);
 
+    const BackgroundCircle = ({
+      radius,
+      strokeWidth
+    }) => /*#__PURE__*/React__default["default"].createElement("circle", {
+      r: radius,
+      stroke: "black",
+      "stroke-width": strokeWidth,
+      fill: "yellow"
+    });
+
     const App = () => /*#__PURE__*/React__default["default"].createElement("svg", {
       height: height,
       width: width
     }, /*#__PURE__*/React__default["default"].createElement("g", {
       transform: `translate(${centreX},${centreY})`
-    }, /*#__PURE__*/React__default["default"].createElement("circle", {
-      r: (width - strokeWidth) / 2,
-      stroke: "black",
-      "stroke-width": strokeWidth,
-      fill: "yellow"
+    }, /*#__PURE__*/React__default["default"].createElement(BackgroundCircle, {
+      radius: (width - strokeWidth) / 2,
+      strokeWidth: strokeWidth
     }), /*#__PURE__*/React__default["default"].createElement("circle", {
       cx: -eyeOffsetX,
       cy: -eyeOffsetY,

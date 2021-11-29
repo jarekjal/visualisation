@@ -19,10 +19,20 @@ const mouthArc = d3.arc()
     .startAngle(2 * Math.PI / 4)
     .endAngle(2 * Math.PI / 4 * 3);
 
+const BackgroundCircle = ({radius, strokeWidth}) => (
+    <circle 
+        r={radius} 
+        stroke="black" 
+        stroke-width={strokeWidth} 
+        fill="yellow" 
+    />
+);
+
+
 const App = () => (
     <svg height={height} width={width}>
         <g transform={`translate(${centreX},${centreY})`}>
-            <circle r={(width - strokeWidth)/2} stroke="black" stroke-width={strokeWidth} fill="yellow" />
+            <BackgroundCircle radius={(width - strokeWidth)/2} strokeWidth={strokeWidth} />
             <circle cx={-eyeOffsetX} cy={-eyeOffsetY} r={eyeRadius} fill="black" />
             <circle cx={eyeOffsetX} cy={-eyeOffsetY} r={eyeRadius} fill="black" />
             <path d={mouthArc()} />
