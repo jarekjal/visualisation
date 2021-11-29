@@ -19,26 +19,31 @@ const mouthArc = d3.arc()
     .startAngle(2 * Math.PI / 4)
     .endAngle(2 * Math.PI / 4 * 3);
 
-const BackgroundCircle = ({radius, strokeWidth}) => (
-    <circle 
-        r={radius} 
-        stroke="black" 
-        stroke-width={strokeWidth} 
-        fill="yellow" 
-    />
-);
 
+class BackgroundCircle extends React.Component {
+    render() {
+        const { radius, strokeWidth } = this.props;
+        return (
+            <circle
+                r={radius}
+                stroke="black"
+                stroke-width={strokeWidth}
+                fill="yellow"
+            />
+        );
+    }
+}
 
 const App = () => (
     <svg height={height} width={width}>
         <g transform={`translate(${centreX},${centreY})`}>
-            <BackgroundCircle radius={(width - strokeWidth)/2} strokeWidth={strokeWidth} />
+            <BackgroundCircle radius={(width - strokeWidth) / 2} strokeWidth={strokeWidth} />
             <circle cx={-eyeOffsetX} cy={-eyeOffsetY} r={eyeRadius} fill="black" />
             <circle cx={eyeOffsetX} cy={-eyeOffsetY} r={eyeRadius} fill="black" />
             <path d={mouthArc()} />
         </g>
     </svg>
-); 
+);
 
 const rootElement = document.getElementById('root');
 ReactDOM.render(<App />, rootElement);
