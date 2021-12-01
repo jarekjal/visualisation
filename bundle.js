@@ -42,22 +42,36 @@
       });
     };
 
-    const height = 600;
-    const width = 600;
-    const centreX = width / 2;
-    const centreY = height / 2;
-    const strokeWidth = 10;
-    const eyeOffsetX = 100;
-    const eyeOffsetY = 100;
-    const eyeRadius = 50;
-    const mouthWidth = 20;
-    const mouthRadius = 180;
-
-    const App = () => /*#__PURE__*/React__default["default"].createElement("svg", {
+    const FaceContainer = ({
+      children,
+      height,
+      width,
+      centreX,
+      centreY
+    }) => /*#__PURE__*/React__default["default"].createElement("svg", {
       height: height,
       width: width
     }, /*#__PURE__*/React__default["default"].createElement("g", {
       transform: `translate(${centreX},${centreY})`
+    }, children));
+
+    const Face = ({
+      height,
+      width,
+      centreX,
+      centreY,
+      radius,
+      strokeWidth,
+      eyeOffsetX,
+      eyeOffsetY,
+      eyeRadius,
+      mouthRadius,
+      mouthWidth
+    }) => /*#__PURE__*/React__default["default"].createElement(FaceContainer, {
+      height: height,
+      width: width,
+      centreX: centreX,
+      centreY: centreY
     }, /*#__PURE__*/React__default["default"].createElement(BackgroundCircle, {
       radius: (width - strokeWidth) / 2,
       strokeWidth: strokeWidth
@@ -68,7 +82,23 @@
     }), /*#__PURE__*/React__default["default"].createElement(Mouth, {
       mouthRadius: mouthRadius,
       mouthWidth: mouthWidth
-    })));
+    }));
+
+    const height = 600;
+    const width = 600;
+
+    const App = () => /*#__PURE__*/React__default["default"].createElement(Face, {
+      height: height,
+      width: width,
+      centreX: width / 2,
+      centreY: height / 2,
+      strokeWidth: 10,
+      eyeOffsetX: 100,
+      eyeOffsetY: 100,
+      eyeRadius: 50,
+      mouthWidth: 20,
+      mouthRadius: 180
+    });
 
     const rootElement = document.getElementById('root');
     ReactDOM__default["default"].render( /*#__PURE__*/React__default["default"].createElement(App, null), rootElement);
