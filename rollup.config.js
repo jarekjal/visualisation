@@ -1,9 +1,9 @@
 import { babel } from '@rollup/plugin-babel';
 
 const config = {
-  input: 'index2.js',
+  input: 'index3.js',
   output: {
-    file: 'bundle2.js',
+    file: 'bundle3.js',
     format: 'iife'
   },
   plugins: [babel({ babelHelpers: 'bundled' })]
